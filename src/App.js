@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Navigate, Routes } from "react-router-dom";
+import useFirebaseAuth from "./auth/useFirebaseAuth";
+import Top from "./Top.js";
+import Login from "./auth/Login";
+import SignUp from "./auth/SignUp";
 
 function App() {
+  const { isAuthenticated, isLoading } = useFirebaseAuth();
+  if (isLoading) return <p>loading...</p>;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={isAuthenticated ? <Top /> : <Navigate to="/login" />}
+        />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/signup" element={<SignUp />} />
+      </Routes>
+    </>
   );
 }
-
 export default App;
