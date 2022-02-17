@@ -3,7 +3,7 @@
 # 実行方法
 
 firebase でプロジェクトは作られていることを前提。
-.env ファイルに Firebase プロジェクトの設定画面に書かれている apiKey、authDomation、projectId、storageBucket、messagingSnederId を入力する。
+.env ファイルを作成し、 Firebase プロジェクトの設定画面に書かれている apiKey、authDomation、projectId、storageBucket、messagingSnederId を入力する。
 
 ```
 REACT_APP_FIREBASE_KEY="~~~~~~~~~~"
